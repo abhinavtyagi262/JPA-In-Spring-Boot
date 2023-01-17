@@ -90,7 +90,7 @@ public class StudentService {
 				String studentDobString = new SimpleDateFormat("dd-MM-yyyy").format(studentDobDate);
 
 				studentEntity.setStudentDob(studentDobString);
-				studentEntity.setRegistrationDate(currentDate);
+				studentEntity.setRegistrationDate(studentEntity.getRegistrationDate());
 				studentEntity.setRegistrationStatus(StudentConstant.REGISTRATION_STATUS_REGISTERED);
 				studentEntity.setCreatedBy(studentEntity.getCreatedBy());
 				studentEntity.setUpdatedBy(request.getUsername());
