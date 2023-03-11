@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ public class StudentController {
 	@Autowired
 	StudentService studentService;
 	
+//	@PreAuthorize("hasAnyAuthority('SCOPE_create')")	
 	@PostMapping("/studentCreateUpdate")
 	public ResponseEntity<Object> studentCreateUpdateControllerMethod(@Valid @RequestBody StudentRequest request) throws Exception {		
 
@@ -34,6 +36,7 @@ public class StudentController {
 		return studentService.studentCreateUpdateServiceMethod(request);		
 	}
 	
+//	@PreAuthorize("hasAnyAuthority('SCOPE_read')")	
 	@PostMapping("/studentDetailsRetrieve")
 	public ResponseEntity<Object> studentDetailsRetrieveControllerMethod(@Valid @RequestBody StudentRequest request) throws Exception {		
 
@@ -41,6 +44,7 @@ public class StudentController {
 		return studentService.studentDetailsRetrieveServiceMethod(request);		
 	}
 	
+//	@PreAuthorize("hasAnyAuthority('SCOPE_read')")	
 	@PostMapping("/studentListingRetrieve")
 	public ResponseEntity<Object> studentListingRetrieveControllerMethod(@Valid @RequestBody StudentRequest request) throws Exception {		
 
