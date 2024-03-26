@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abhinav.model.StudentCreateUpdateRequest;
@@ -51,5 +54,21 @@ public class StudentController {
 
 		log.info("===========studentListingRetrieveControllerMethod starts===========");
 		return studentService.studentListingRetrieveServiceMethod(request);		
+	}
+	
+//	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
+	@GetMapping("/getStudentDetails")
+	public ResponseEntity<Object> getStudentDetailsControllerMethod(@RequestParam("studentId") long studentId) throws Exception {		
+
+		log.info("===========getStudentDetailsControllerMethod starts===========");
+		return studentService.getStudentDetailsServiceMethod(studentId);		
+	}
+	
+//	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
+	@GetMapping("/getStudentDetails2")
+	public ResponseEntity<Object> getStudentDetails2ControllerMethod(@Valid @ModelAttribute StudentDetailsRetrieveRequest request) throws Exception {		
+
+		log.info("===========getStudentDetails2ControllerMethod starts===========");
+		return studentService.getStudentDetails2ServiceMethod(request);		
 	}
 }

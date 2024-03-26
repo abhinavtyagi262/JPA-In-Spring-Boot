@@ -182,4 +182,72 @@ public class StudentService {
 		log.info("===========studentListingRetrieveServiceMethod ends===========");
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
+	
+	public ResponseEntity<Object> getStudentDetailsServiceMethod(long studentId) throws Exception {
+		log.info("===========getStudentDetailsServiceMethod starts===========");
+		StudentDetailsRetrieveAPIResponse response = new StudentDetailsRetrieveAPIResponse();
+		StudentDetailsRetrieveResponse result = null;
+		Optional<StudentEntity> studentEntityOptional = studentRepository.findById(studentId);
+
+		if (!studentEntityOptional.isPresent()) {
+			log.info("===========student not found in database===========");
+		} else {
+			log.info("===========student found in database===========");
+			try {
+				StudentEntity studentEntity = studentEntityOptional.get();
+				result = new StudentDetailsRetrieveResponse();
+				result.setStudentId(String.valueOf(studentEntity.getStudentId()));
+				result.setStudentName(studentEntity.getStudentName());
+				result.setStudentMobile(studentEntity.getStudentMobile());
+				result.setStudentDob(studentEntity.getStudentDob());
+				result.setRegistrationDate(studentEntity.getRegistrationDate());
+				result.setRegistrationStatus(studentEntity.getRegistrationStatus());
+				result.setCreatedBy(studentEntity.getCreatedBy());
+				result.setUpdatedBy(studentEntity.getUpdatedBy());
+				result.setCreatedOn(studentEntity.getCreatedOn());
+				result.setUpdatedOn(studentEntity.getUpdatedOn());
+			} catch (Exception e) {
+				log.error("===========getStudentDetailsServiceMethod catch block===========");
+				e.printStackTrace();
+				return new ResponseEntity<Object>(response, HttpStatus.BAD_REQUEST);
+			}
+		}
+		response.setResult(result);
+		log.info("===========getStudentDetailsServiceMethod ends===========");
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+	
+	public ResponseEntity<Object> getStudentDetails2ServiceMethod(StudentDetailsRetrieveRequest request) throws Exception {
+		log.info("===========getStudentDetails2ServiceMethod starts===========");
+		StudentDetailsRetrieveAPIResponse response = new StudentDetailsRetrieveAPIResponse();
+		StudentDetailsRetrieveResponse result = null;
+		Optional<StudentEntity> studentEntityOptional = studentRepository.findById(request.getStudentId());
+
+		if (!studentEntityOptional.isPresent()) {
+			log.info("===========student not found in database===========");
+		} else {
+			log.info("===========student found in database===========");
+			try {
+				StudentEntity studentEntity = studentEntityOptional.get();
+				result = new StudentDetailsRetrieveResponse();
+				result.setStudentId(String.valueOf(studentEntity.getStudentId()));
+				result.setStudentName(studentEntity.getStudentName());
+				result.setStudentMobile(studentEntity.getStudentMobile());
+				result.setStudentDob(studentEntity.getStudentDob());
+				result.setRegistrationDate(studentEntity.getRegistrationDate());
+				result.setRegistrationStatus(studentEntity.getRegistrationStatus());
+				result.setCreatedBy(studentEntity.getCreatedBy());
+				result.setUpdatedBy(studentEntity.getUpdatedBy());
+				result.setCreatedOn(studentEntity.getCreatedOn());
+				result.setUpdatedOn(studentEntity.getUpdatedOn());
+			} catch (Exception e) {
+				log.error("===========getStudentDetails2ServiceMethod catch block===========");
+				e.printStackTrace();
+				return new ResponseEntity<Object>(response, HttpStatus.BAD_REQUEST);
+			}
+		}
+		response.setResult(result);
+		log.info("===========getStudentDetails2ServiceMethod ends===========");
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
 }

@@ -5,7 +5,7 @@ studentCreateUpdate API
 ------------------------
 ------------------------
 
-Local Url (POST)
+Local URL (POST)
 -----------------
 http://localhost:9080/abhinav/studentCreateUpdate
 
@@ -35,7 +35,7 @@ studentDetailsRetrieve API
 ---------------------------
 ---------------------------
 
-Local Url (POST)
+Local URL (POST)
 -----------------
 http://localhost:9080/abhinav/studentDetailsRetrieve
 
@@ -70,7 +70,7 @@ studentListingRetrieve API
 ---------------------------
 ---------------------------
 
-Local Url (POST)
+Local URL (POST)
 -----------------
 http://localhost:9080/abhinav/studentListingRetrieve
 
@@ -115,3 +115,67 @@ Response Body
 }
 
 
+getStudentDetails API
+----------------------
+----------------------
+
+Local URL (GET)
+----------------
+http://localhost:9080/abhinav/getStudentDetails?studentId=1
+
+
+Request Param
+--------------
+studentId: 1
+
+
+Response Body
+--------------
+{
+    "result": {
+        "studentId": "1",
+        "studentName": "studentName1",
+        "studentMobile": "9999999999",
+        "studentDob": "05-12-1991",
+        "registrationDate": "17-01-2023",
+        "registrationStatus": "Registered",
+        "createdBy": "username1",
+        "updatedBy": "username1",
+        "createdOn": "2023-01-17T19:35:41",
+        "updatedOn": "2023-01-17T19:40:48"
+    },
+    "errors": null
+}
+
+
+getStudentDetails2 API
+-----------------------
+-----------------------
+
+Local URL (GET)
+----------------
+http://localhost:9080/abhinav/getStudentDetails2?studentId=1
+
+
+Request Param
+--------------
+studentId: 1
+
+
+Response Body
+--------------
+{
+    "result": {
+        "studentId": "1",
+        "studentName": "studentName1",
+        "studentMobile": "9999999999",
+        "studentDob": "05-12-1991",
+        "registrationDate": "17-01-2023",
+        "registrationStatus": "Registered",
+        "createdBy": "username1",
+        "updatedBy": "username1",
+        "createdOn": "2023-01-17T19:35:41",
+        "updatedOn": "2023-01-17T19:40:48"
+    },
+    "errors": null
+}
