@@ -1,5 +1,11 @@
 # JPA-In-Spring-Boot
-Student Registration Microservice (studentCreateUpdate API, studentDetailsRetrieve API, and studentListingRetrieve API)
+Student Registration Microservice
+
+Swagger URL
+------------
+------------
+http://localhost:9080/abhinav/swagger-ui/index.html
+
 
 studentCreateUpdate API
 ------------------------

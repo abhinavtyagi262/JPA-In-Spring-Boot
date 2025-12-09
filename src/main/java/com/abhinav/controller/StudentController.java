@@ -1,5 +1,6 @@
 package com.abhinav.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author Abhinav Tyagi
  *
  */
+@Tag(name = "Student Registration APIs", description = "APIs for Student Registration and Retrieval")
 @Slf4j
 @CrossOrigin
 @RestController
