@@ -217,7 +217,7 @@ public class StudentService {
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 	
-	public ResponseEntity<Object> getStudentDetails2ServiceMethod(StudentDetailsRetrieveRequest request) throws Exception {
+	public ResponseEntity<?> getStudentDetails2ServiceMethod(StudentDetailsRetrieveRequest request) throws Exception {
 		log.info("===========getStudentDetails2ServiceMethod starts===========");
 		StudentDetailsRetrieveAPIResponse response = new StudentDetailsRetrieveAPIResponse();
 		StudentDetailsRetrieveResponse result = null;

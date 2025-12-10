@@ -64,7 +64,7 @@ public class StudentController {
 	
 //	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
 	@GetMapping("/getStudentDetails2") // URL: http://localhost:9080/abhinav/getStudentDetails2?studentId=1
-	public ResponseEntity<Object> getStudentDetails2ControllerMethod(@Valid @ModelAttribute StudentDetailsRetrieveRequest request) throws Exception {		
+	public ResponseEntity<?> getStudentDetails2ControllerMethod(@Valid @ModelAttribute StudentDetailsRetrieveRequest request) throws Exception {
 
 		log.info("===========getStudentDetails2ControllerMethod starts===========");
 		return studentService.getStudentDetails2ServiceMethod(request);
@@ -72,8 +72,8 @@ public class StudentController {
 
 //	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
     @GetMapping("/getStudentDetails3/{studentId}/{studentName}") // URL: http://localhost:9080/abhinav/getStudentDetails3/1/Ram
-    public ResponseEntity<Object> getStudentDetails3ControllerMethod(@PathVariable("studentId") long studentId,
-                                                                     @PathVariable("studentName") String studentName) throws Exception {
+    public ResponseEntity<?> getStudentDetails3ControllerMethod(@PathVariable("studentId") long studentId,
+                                                                @PathVariable("studentName") String studentName) throws Exception {
 
         log.info("===========getStudentDetails3ControllerMethod starts===========");
         log.info("PathVariable studentName is: " + studentName);
