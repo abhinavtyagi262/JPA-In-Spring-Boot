@@ -6,13 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.abhinav.model.StudentCreateUpdateRequest;
 import com.abhinav.model.StudentDetailsRetrieveRequest;
@@ -59,18 +53,30 @@ public class StudentController {
 	}
 	
 //	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
-	@GetMapping("/getStudentDetails")
-	public ResponseEntity<Object> getStudentDetailsControllerMethod(@RequestParam("studentId") long studentId) throws Exception {		
+	@GetMapping("/getStudentDetails") // URL: http://localhost:9080/abhinav/getStudentDetails?studentId=1&studentName=Ram
+	public ResponseEntity<Object> getStudentDetailsControllerMethod(@RequestParam("studentId") long studentId,
+                                                                    @RequestParam("studentName") String studentName) throws Exception {
 
 		log.info("===========getStudentDetailsControllerMethod starts===========");
+        log.info("RequestParam studentName is: " + studentName);
 		return studentService.getStudentDetailsServiceMethod(studentId);		
 	}
 	
 //	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
-	@GetMapping("/getStudentDetails2")
+	@GetMapping("/getStudentDetails2") // URL: http://localhost:9080/abhinav/getStudentDetails2?studentId=1
 	public ResponseEntity<Object> getStudentDetails2ControllerMethod(@Valid @ModelAttribute StudentDetailsRetrieveRequest request) throws Exception {		
 
 		log.info("===========getStudentDetails2ControllerMethod starts===========");
-		return studentService.getStudentDetails2ServiceMethod(request);		
+		return studentService.getStudentDetails2ServiceMethod(request);
 	}
+
+//	@PreAuthorize("hasAnyAuthority('SCOPE_read')")
+    @GetMapping("/getStudentDetails3/{studentId}/{studentName}") // URL: http://localhost:9080/abhinav/getStudentDetails3/1/Ram
+    public ResponseEntity<Object> getStudentDetails3ControllerMethod(@PathVariable("studentId") long studentId,
+                                                                     @PathVariable("studentName") String studentName) throws Exception {
+
+        log.info("===========getStudentDetails3ControllerMethod starts===========");
+        log.info("PathVariable studentName is: " + studentName);
+        return studentService.getStudentDetailsServiceMethod(studentId);
+    }
 }

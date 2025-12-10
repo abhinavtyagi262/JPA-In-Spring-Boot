@@ -1,6 +1,7 @@
 # JPA-In-Spring-Boot
 Student Registration Microservice
 
+
 Swagger URL
 ------------
 ------------
@@ -11,12 +12,11 @@ studentCreateUpdate API
 ------------------------
 ------------------------
 
-Local URL (POST)
------------------
+Local URL (@PostMapping)
+-------------------------
 http://localhost:9080/abhinav/studentCreateUpdate
 
-
-Request Body
+@RequestBody
 -------------
 {
     "studentId": "1",
@@ -26,8 +26,7 @@ Request Body
     "username": "username1"
 }
 
-
-Response Body
+@ResponseBody
 --------------
 {
     "result": {
@@ -41,19 +40,17 @@ studentDetailsRetrieve API
 ---------------------------
 ---------------------------
 
-Local URL (POST)
------------------
+Local URL (@PostMapping)
+-------------------------
 http://localhost:9080/abhinav/studentDetailsRetrieve
 
-
-Request Body
+@RequestBody
 -------------
 {
     "studentId": "1"
 }
 
-
-Response Body
+@ResponseBody
 --------------
 {
     "result": {
@@ -76,19 +73,17 @@ studentListingRetrieve API
 ---------------------------
 ---------------------------
 
-Local URL (POST)
------------------
+Local URL (@PostMapping)
+-------------------------
 http://localhost:9080/abhinav/studentListingRetrieve
 
-
-Request Body
+@RequestBody
 -------------
 {
     "studentName": "studentName1"
 }
 
-
-Response Body
+@ResponseBody
 --------------
 {
     "result": [
@@ -125,17 +120,15 @@ getStudentDetails API
 ----------------------
 ----------------------
 
-Local URL (GET)
-----------------
-http://localhost:9080/abhinav/getStudentDetails?studentId=1
+Local URL (@GetMapping)
+------------------------
+http://localhost:9080/abhinav/getStudentDetails?studentId=1&studentName=Ram
 
-
-Request Param
+@RequestParam
 --------------
-studentId: 1
+studentId: 1, studentName: Ram
 
-
-Response Body
+@ResponseBody
 --------------
 {
     "result": {
@@ -154,21 +147,19 @@ Response Body
 }
 
 
-getStudentDetails2 API
------------------------
------------------------
+getStudentDetails2 API (Using @ModelAttribute)
+-----------------------------------------------
+-----------------------------------------------
 
-Local URL (GET)
-----------------
+Local URL (@GetMapping)
+------------------------
 http://localhost:9080/abhinav/getStudentDetails2?studentId=1
 
-
-Request Param
+@RequestParam
 --------------
 studentId: 1
 
-
-Response Body
+@ResponseBody
 --------------
 {
     "result": {
@@ -184,4 +175,35 @@ Response Body
         "updatedOn": "2023-01-17T19:40:48"
     },
     "errors": null
+}
+
+
+getStudentDetails3 API
+-----------------------
+-----------------------
+
+Local URL (@GetMapping)
+------------------------
+http://localhost:9080/abhinav/getStudentDetails3/1/Ram
+
+@PathVariable
+--------------
+studentId: 1, studentName: Ram
+
+@ResponseBody
+--------------
+{
+"result": {
+"studentId": "1",
+"studentName": "studentName1",
+"studentMobile": "9999999999",
+"studentDob": "05-12-1991",
+"registrationDate": "17-01-2023",
+"registrationStatus": "Registered",
+"createdBy": "username1",
+"updatedBy": "username1",
+"createdOn": "2023-01-17T19:35:41",
+"updatedOn": "2023-01-17T19:40:48"
+},
+"errors": null
 }
